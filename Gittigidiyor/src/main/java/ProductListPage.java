@@ -1,13 +1,20 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 
 public class ProductListPage extends WebPage {
 
 	
-	By catagories = By.className("u0996x-2 lbZvZt");
-	By productCardLocator = By.className("sc-1nx8ums-0 dyekHG");
-	By secondPageLocator = By.cssSelector("[aria-label=2. sayfa]");
-	By previousPageLocator = By.cssSelector("[aria-label=Önceki sayfa]");
+	By catagories = By.className("lbZvZt");
+	By productCardLocator = By.className("khXIrI");
+	By secondPageLocator = By.className("ZxdVY");
+	By previousPageLocator = By.className("iGOuPd");
+	By addToBasketButtonLocator = By.className("iRsyUX");
 	
+	public ProductListPage(WebDriver driver) {
+		super(driver);
+	}
+
 	public Boolean isOnProductPage() {
 		return ElementExist(catagories);
 
@@ -18,13 +25,23 @@ public class ProductListPage extends WebPage {
 
 	}
 	public Boolean isOnSecondProductPage() {
-		return ElementExist(previousPageLocator);
+		return ElementEnabled(previousPageLocator);
 		
 	}
 
-	public void selectRandomProduct(int i) {
-		findElementList(productCardLocator).get(i).click();
+	
+	public void selectFirstProduct() {
+
+		findElement(productCardLocator).click();
 		
+	}
+	
+	
+	public void selectRandomProduct(int i) {
+		
+		Actions action = new Actions(driver);
+		action.moveToElement(findElement(productCardLocator)).click().build().perform();
+		click(productCardLocator);
 	}
 
 }

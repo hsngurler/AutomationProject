@@ -1,4 +1,4 @@
 
-public class CardPage extends WebPage {
+/*public class CardPage extends WebPage {
 
-}
+}*/

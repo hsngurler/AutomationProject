@@ -7,7 +7,7 @@ public class WebPage {
 
 	WebDriver driver;
 	
-	public void mainPage(WebDriver driver) {
+	public WebPage(WebDriver driver) {
 		this.driver = driver;
 		
 	}
@@ -38,4 +38,10 @@ public class WebPage {
 		return findElement(locator).isDisplayed();
 		
 	}
+	
+	public Boolean ElementEnabled(By locator) {
+		return findElement(locator).isEnabled();
+		
+	}
+	
 }
